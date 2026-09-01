@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>简历关键词匹配检测 · Resume Match</title>
+<meta name="description" content="免费开源、纯浏览器运行的简历与招聘JD关键词匹配检测工具，算出匹配度评分，列出简历里缺失的关键词。不联网、不上传简历。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>简历<span class="accent">关键词匹配</span>检测</h1>
+    <p class="tagline">左边贴招聘 JD，右边贴你的简历，一键算出关键词匹配度，列出 JD 里提到但简历没写的关键词。基于关键词重合度，不是语义理解。</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-head">
+        <span>招聘 JD</span>
+        <button id="btnExample" class="btn btn-ghost">加载示例</button>
+      </div>
+      <textarea id="jdInput" spellcheck="false" placeholder="把招聘启事粘贴到这里……"></textarea>
+    </section>
+    <section class="panel">
+      <div class="panel-head">
+        <span>我的简历</span>
+        <button id="btnRun" class="btn btn-primary">检测匹配度 →</button>
+      </div>
+      <textarea id="resumeInput" spellcheck="false" placeholder="把简历文本粘贴到这里……"></textarea>
+    </section>
+  </main>
+
+  <section class="result-section">
+    <div class="score-card">
+      <div class="score-num" id="scoreNum">--</div>
+      <div class="score-label">关键词匹配度</div>
+    </div>
+    <div class="keyword-cols">
+      <div class="kw-col">
+        <div class="kw-col-head matched">✓ 简历已覆盖</div>
+        <div id="matchedList" class="kw-list"></div>
+      </div>
+      <div class="kw-col">
+        <div class="kw-col-head missing">✗ 简历里没有，建议补充</div>
+        <div id="missingList" class="kw-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>MIT 协议开源，纯前端关键词打分，不联网、不上传简历内容。</p>
+    <p>想要 AI 智能生成简历、语法润色、AI 评分诊断，把面试通过率提升 3 倍？<a href="https://inzyxuashop.com/aijianli-yuanma.html" target="_blank" rel="noopener">看看完整版 AI 简历源码 →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
