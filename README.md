@@ -1,29 +1,25 @@
-# 简历关键词匹配检测 · Resume Match
+# Resume Match
 
-**[在线体验 →](https://anna123123123-creator.github.io/resume-match/)**
+**[Live demo →](https://anna123123123-creator.github.io/resume-match/)**
 
-免费开源、纯浏览器运行的简历与招聘 JD 关键词匹配检测工具。左边贴招聘启事，右边贴简历，一键算出匹配度评分，列出 JD 里提到但简历没写的内容，帮你查漏补缺。基于关键词重合度打分，不联网、不上传简历。
+A free, open-source resume-to-job-description keyword matcher that runs entirely in the browser. Paste the job posting on one side and your resume on the other: it scores the match and lists what the posting asks for that your resume never mentions. Keyword overlap only — nothing is uploaded, nothing is stored.
 
 ![screenshot](screenshot.png)
 
-## 试用方法
+## Run it
 
-直接用浏览器打开 `index.html`，或用静态文件服务器跑起来：
+Open `index.html` in a browser, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-## 实现原理
+## How it works
 
-把 JD 按标点拆成一条条"要求片段"，对每条片段和简历全文分别做分词（英文单词 + 中文二元词组），计算该片段的关键词有多少比例能在简历里找到——重合度超过 50% 就算"已覆盖"，否则列进"建议补充"。最终匹配度 = 已覆盖片段数 / 总片段数。
+The job description is split on punctuation into individual requirement fragments. Each fragment and the resume are tokenised (English words, plus bigrams for Chinese), and the tool measures what share of a fragment's keywords also appear in the resume. Above 50% overlap the fragment counts as covered; below that it goes into the "worth adding" list. The final score is covered fragments divided by total fragments.
 
-这是关键词重合度打分，不是真正理解语义——如果简历用完全不同的说法表达同一个意思（比如 JD 写"具备跨部门协作经验"，简历写"带过团队"），可能识别不出来。
+This is keyword overlap, not semantic understanding. If your resume says the same thing in completely different words — the posting asks for "cross-functional collaboration" and your resume says "led a team" — it will not connect the two. It is a string-matching tool and it does not pretend to be anything else.
 
-## 协议
+## License
 
-MIT。
-
-## 相关项目
-
-这个是做 **AI 简历**产品时顺手做的免费小工具——只做关键词覆盖率检测，不会帮你改写、不会打分诊断。完整版是 AI 智能生成简历、语法润色、关键词匹配、AI 逐项评分，源码在这：[全能源码 · AI 简历网站源码](https://inzyxuashop.com/aijianli-yuanma.html)。
+MIT.
